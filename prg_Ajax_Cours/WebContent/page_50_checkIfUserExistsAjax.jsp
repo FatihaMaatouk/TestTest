@@ -77,10 +77,10 @@
 				}
 			}
 			
-			function addPlayer(e){
+			function submitFormAjax(e){
 				e.preventDefault();
-				var url="SrvAnimes?action=add&nom="+ document.getElementById("nomNewPlayer").value +
-						"&prenom=" + document.getElementById("prenomNewPlayer").value +"&genre="+document.getElementById("genderNewPlayer").value ;
+				var url="SrvRegister?action=add&nom="+ document.getElementById("name").value +
+						"&password=" + document.getElementById("password").value;
 				//var requete	
 				var requete = new XMLHttpRequest();
 				
@@ -89,8 +89,12 @@
 				requete.onreadystatechange=function(){
 					if(requete.readyState==4){
 						if(requete.status == 200){
-							document.getElementById("tableJoueurs").innerHTML = requete.responseText;
-							console.log(requete.responseText);
+							 requete.responseText;
+							if(requete.responseText === "false"){
+								document.getElementById("isSuccess").innerHTML = "L'identifiant existe déjà.";
+							} else {
+								document.getElementById("isSuccess").innerHTML = "Inscription confirmée";
+							}
 						}
 					
 					}
@@ -98,14 +102,10 @@
 			}
 			</script>
 			</head>
-			<body onload="initialise();">
-				<div id="showCountries">
-				</div>
-				<div id="showRegions">
-				</div>	
-				<div id="showDeps">
-				</div>	
-				<div id="showCities">
-				</div>
-				</body>
+			<div id="isSuccess"></div>
+			<form method="get">
+			Nom: <input type="text" id="name" placeholder="Nom">
+			Password: <input type="password" id="password" placeholder="Mot de Passe">
+			<button type="submit" onclick="submitFormAjax(event)">TestThis</button>
+			</form>
 </html>

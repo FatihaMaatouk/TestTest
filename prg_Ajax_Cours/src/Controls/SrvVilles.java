@@ -18,7 +18,7 @@ import model.Region;
 /**
  * Servlet implementation class SrvAnimes
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/SrvAnimes" })
+@WebServlet(asyncSupported = true, urlPatterns = { "/SrvVilles" })
 public class SrvVilles extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     /**
@@ -36,6 +36,7 @@ public class SrvVilles extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		 String choice = request.getParameter("action");
+		 System.out.println(choice);
 		 switch(choice)
 		 {
 		 	case "choixPays":
