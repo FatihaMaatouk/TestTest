@@ -26,7 +26,7 @@ public class parametresBd {
 	 */
 	// 		constante 	:	nom de la source de données :
 	//				:	Type d’accès + nom serveur + nom de la BD
-	private static final String urlMY = "jdbc:mysql://127.0.0.1:3308/tennisbdd";
+	private static final String urlMY = "jdbc:mysql://localhost:3308/tennisbdd?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	//		constante	:	login
 	private static final String userMY = "root";
 	//		constante	:	mot de passe
@@ -127,6 +127,7 @@ public class parametresBd {
 		return resultat;
 		} 
 	catch (Exception e) {
+		e.printStackTrace();
 		return null;
 		}
 	}

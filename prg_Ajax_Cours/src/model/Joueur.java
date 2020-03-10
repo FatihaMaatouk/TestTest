@@ -62,24 +62,69 @@ public class Joueur {
 		
 		String req = "SELECT * FROM joueurs";
 		try {
+			
 			ResultSet res = parametresBd.executeRequeteSQL(req);
-			System.out.println(res.toString());
+			
 			if(res != null) {
 				System.out.println(res.toString());
 				while (res.next()) {
+					System.out.println(res.toString());
 					Joueur player = new Joueur();
-					player.setId(res.getInt(0));
-					player.setNom(res.getString(1));
-					player.setPrenom(res.getString(2));
-					player.setGenre(res.getString(3));
+					player.setId(res.getInt(1));
+					player.setNom(res.getString(2));
+					player.setPrenom(res.getString(3));
+					player.setGenre(res.getString(4));
 					vouala.add(player);
 				}
 			}
-		} catch (ClassNotFoundException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return vouala;
+	}
+	
+	public static Joueur searchPlayer(String id) throws SQLException{
+		
+		String req = "SELECT * FROM joueurs WHERE id = " + id;
+		Joueur j = new Joueur();
+		try {
+			
+			ResultSet res = parametresBd.executeRequeteSQL(req);
+			
+			if(res != null) {
+				System.out.println(res.toString());
+				while (res.next()) {
+					System.out.println(res.toString());
+					Joueur player = new Joueur();
+					player.setId(res.getInt(1));
+					player.setNom(res.getString(2));
+					player.setPrenom(res.getString(3));
+					player.setGenre(res.getString(4));
+					return player;
+				}
+			}
+			return null;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+public static Boolean addPlayer(String nom, String prenom, String genre) throws SQLException{
+		
+		String req = "INSERT INTO joueurs(id,nom,prenom,sexe) VALUES(null,'" + nom+"','"+prenom+"','"+genre+"')";
+		System.out.println(req);
+		try {
+			
+			parametresBd.executeUpdateSQL(req);
+			return true;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 }
