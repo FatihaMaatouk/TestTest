@@ -13,7 +13,6 @@ public class Degrees {
 			
 			if(res.next()) {
 				req = res.getString(1);
-				System.out.println(req);
 				return req;
 			} else {
 				return "";

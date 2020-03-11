@@ -60,7 +60,7 @@ public class SrvVilles extends HttpServlet {
 		 			answer = "<select id='chosenRegion' name='region' onchange='showDept(this.value)' onload='showDept(this.value)'>";
 		 			answer += "<option></option>";
 		 			for(Region c :regions) {
-		 				answer += "<option value='"+ c.getId() +"'>"+c.getCode()+ " "+c.getNom()+"</option>";
+		 				answer += "<option value='"+ c.getId() +"'>"+c.getNom()+"</option>";
 		 			}
 		 			answer += "</select>";
 		 			System.out.println(region);
@@ -76,7 +76,7 @@ public class SrvVilles extends HttpServlet {
 		 			answer = "<select id='chosenDep' name='departement' onchange='showCities(this.value)' onload='showCities(this.value)'>";
 		 			answer += "<option></option>";
 		 			for(Department c :deps) {
-		 				answer += "<option value='"+ c.getId() +"'>"+c.getCode()+ " "+c.getNom()+"</option>";
+		 				answer += "<option value='"+ c.getId() +"'> "+c.getNom()+"</option>";
 		 			}
 		 			answer += "</select>";
 		 			System.out.println(answer);

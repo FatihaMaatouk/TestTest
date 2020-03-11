@@ -79,6 +79,10 @@
 			
 			function submitFormAjax(e){
 				e.preventDefault();
+				if(document.getElementById("password").value.length <8 ){
+					document.getElementById("isSuccess").innerHTML = "Mot de passe trop court.";
+					return;
+				}
 				var url="SrvRegister?action=add&nom="+ document.getElementById("name").value +
 						"&password=" + document.getElementById("password").value;
 				//var requete	
@@ -105,7 +109,7 @@
 			<div id="isSuccess"></div>
 			<form method="get">
 			Nom: <input type="text" id="name" placeholder="Nom">
-			Password: <input type="password" id="password" placeholder="Mot de Passe">
-			<button type="submit" onclick="submitFormAjax(event)">TestThis</button>
+			Mot de Passe: <input type="password" id="password" minlength="8" placeholder="Mot de Passe">
+			<button type="submit" onclick="submitFormAjax(event)">Valider User</button>
 			</form>
 </html>

@@ -69,7 +69,7 @@
 				requete.onreadystatechange=function(){
 					if(requete.readyState==4){
 						if(requete.status == 200){
-							display=document.getElementById("showDeps");
+							display=document.getElementById("showCities");
 							display.innerHTML=requete.responseText;
 						}
 					
